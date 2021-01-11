@@ -92,6 +92,57 @@
 </div>
 
 
+<div class="centred-slide">
+    <div class="container">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+            </div>
+            <div class="swiper-button-next"><img src="img/arrow-slide-right.svg" alt=""></div>
+            <div class="swiper-button-prev"><img src="img/arrow-slide-left.svg" alt=""></div>
+        </div>
+    </div>
+</div>
+
+<div class="out-container">
+    <div class="body-card">
+        <div class="container">
+            <div class="swiper-button-next"><i class="icon-arrow-slide-right"></i></div>
+            <div class="swiper-button-prev"><i class="icon-arrow-slide-left"></i></div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="body-card">
+        <div class="container">
+            <div class="swiper-button-next"><i class="icon-arrow-slide-right"></i></div>
+            <div class="swiper-button-prev"><i class="icon-arrow-slide-left"></i></div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                    <div class="swiper-slide"><div class="slide__inner"><img src="img/customer-sketches.png" alt=""></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 	<!-- Load CSS -->
 	
     <link rel="stylesheet"  href="css/normalize.css" />
@@ -137,6 +188,56 @@
      });
 
      var swiper = new Swiper('.simple .swiper-container');
+
+     let centeed = new Swiper('.centred-slide .swiper-container', {
+          allowTouchMove:false,
+          navigation: {
+               nextEl: '.centred-slide .swiper-button-next',
+               prevEl: '.centred-slide .swiper-button-prev',
+          },
+          breakpoints: {
+               1366: {
+                    slidesPerView: 2,
+                    spaceBetween: 0,
+               },
+          }
+     });
+
+     {
+               let card = document.querySelectorAll('.body-card .swiper-container');
+
+               for (let i = 0; i < card.length ; i++) {
+                    let prevButton = card[i].parentElement.parentElement.querySelector('.swiper-button-prev');
+                    let nextButton = card[i].parentElement.parentElement.querySelector('.swiper-button-next');
+                    card[i].classList.add('s'+i);
+                    nextButton.classList.add('s'+i);
+                    prevButton.classList.add('s'+i);
+               }
+
+               for (let i = 0; i < card.length ; i++) {
+
+                    let swiperCard = new Swiper('.swiper-container.s'+i, {
+                         slidesPerView: 1,
+                         spaceBetween: 10,
+                         allowTouchMove:false,
+                         navigation: {
+                              nextEl: '.swiper-button-next.s'+i,
+                              prevEl: '.swiper-button-prev.s'+i,
+                         },
+                         breakpoints: {
+                              640: {
+                                   slidesPerView: 1,
+                                   spaceBetween: 0,
+                              },
+                              650: {
+                                   slidesPerView: 2,
+                                   spaceBetween: 20,
+                              },
+                         }
+                    });
+               }
+
+     }
 </script>
 
 </body>
